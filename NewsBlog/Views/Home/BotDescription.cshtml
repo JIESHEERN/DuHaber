@@ -1,0 +1,22 @@
+﻿@{ 
+    var categories = ViewBag.Category;
+}
+    <div class="col-lg-3 stretch-card grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <h2>Kategoriler</h2>
+                <ul class="vertical-menu">
+                    @foreach (var item in categories)
+                    
+                    {
+                  
+                    
+                        <li><a href="/New/NewsGetByCategoryID/@item.CategoryID">@item.CategoryName</a></li>
+                    
+                }
+
+                </ul>
+            </div>
+        </div>
+    </div>
+

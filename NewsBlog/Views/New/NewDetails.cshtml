@@ -1,0 +1,65 @@
+﻿@model EntityLayer.Concrete.New
+@{
+    ViewData["Title"] = "NewDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+           <div class="baslikdetails"> <p class="card-description">Haber Detayları:</p> </div>
+            <form class="forms-sample">
+                @Html.HiddenFor(x => x.NewID, new { @class = "form-control" })
+                <div class="form-group baslikdetails baslikboyut">
+                    <label></label>
+                    @Model.Title
+                </div>
+                 <div class="form-group">
+
+                    <img src="@Model.ImageURL" width=auto height=auto />
+                </div>
+                <div class="form-group">
+                    <label></label>
+                    <b>@Model.Description
+                </b></div>
+               
+                <div class="form-group">
+                    @Model.Category
+                </div>
+                <div class="nav-item">
+                    <a href="/Home/Index/" class="nav-link">Ana Sayfa</a>
+                </div>
+                <!-- Button trigger modal 
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Launch demo modal
+                </button>-->
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form method="post" action="/New/Comment" >
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <textarea class="form-control" name="Icerik" placeholder="Yorum Yazınız"></textarea>
+                                    <input type="hidden" name="NewID" value="@Model.NewID" />
+                                    <input type="hidden" name="UserID" value="@Model.UserID" />
+                                    <input type="hidden" name="Date" value="@DateTime.Now" />
+
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+                                    <button type="button" class="btn btn-primary">Gönder</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
